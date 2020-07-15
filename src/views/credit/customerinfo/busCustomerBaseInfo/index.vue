@@ -25,7 +25,8 @@
                 v-for="item in dict.InfRecType"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="姓名">
@@ -37,7 +38,8 @@
                 v-for="item in dict.IDType"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="证件号码">
@@ -55,7 +57,8 @@
                 v-for="item in dict.RptDateCode"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="客户资料维护机构代码">
@@ -67,7 +70,8 @@
                 v-for="item in dict.CustomerType"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="性别">
@@ -76,7 +80,8 @@
                 v-for="item in dict.Sex"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="出生日期">
@@ -106,7 +111,8 @@
                 v-for="item in dict.MariStatus"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="配偶姓名">
@@ -133,7 +139,8 @@
                 v-for="item in dict.EduLevel"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="学位">
@@ -142,7 +149,8 @@
                 v-for="item in dict.AcaDegree"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="信息更新日期">
@@ -154,7 +162,8 @@
                 v-for="item in dict.EmpStatus"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="单位名称">
@@ -166,7 +175,8 @@
                 v-for="item in dict.CpnType"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="单位所属行业">
@@ -175,7 +185,8 @@
                 v-for="item in dict.Industry"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="单位详细地址">
@@ -196,7 +207,8 @@
                 v-for="item in dict.Occupation"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="职务">
@@ -205,7 +217,8 @@
                 v-for="item in dict.Title"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="职称">
@@ -214,7 +227,8 @@
                 v-for="item in dict.TechTitle"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="本单位工作起始年份">
@@ -229,7 +243,8 @@
                 v-for="item in dict.ResiStatus"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="居住地详细地址">
@@ -495,7 +510,7 @@
 import crudBusCustomerBaseInfo from '@/api/busCustomerBaseInfo'
 import CRUD, { presenter, header, form, crud } from '@crud/crud'
 import rrOperation from '@crud/RR.operation'
-import crudOperation from '@crud/CRUD.operation'
+import crudOperation from '@crud/CRUD.operation2'
 import udOperation from '@crud/UD.operation'
 import pagination from '@crud/Pagination'
 

@@ -25,7 +25,8 @@
                 v-for="item in dict.InfRecType"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="A姓名">
@@ -37,7 +38,8 @@
                 v-for="item in dict.IDType"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="A证件号码">
@@ -52,7 +54,8 @@
                 v-for="item in dict.IDType"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="B证件号码">
@@ -64,7 +67,8 @@
                 v-for="item in dict.FamRel"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="家族关系有效标志">
@@ -73,7 +77,8 @@
                 v-for="item in dict.FamRelaAssFlag"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="信息来源编码">
@@ -163,7 +168,7 @@
 import crudBusCustomerRelationship from '@/api/busCustomerRelationship'
 import CRUD, { presenter, header, form, crud } from '@crud/crud'
 import rrOperation from '@crud/RR.operation'
-import crudOperation from '@crud/CRUD.operation'
+import crudOperation from '@crud/CRUD.operation2'
 import udOperation from '@crud/UD.operation'
 import pagination from '@crud/Pagination'
 

@@ -25,7 +25,8 @@
                 v-for="item in dict.InfRecType"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="姓名">
@@ -103,7 +104,7 @@
 import crudBusDelCustomerCardpipy from '@/api/busDelCustomerCardpipy'
 import CRUD, { presenter, header, form, crud } from '@crud/crud'
 import rrOperation from '@crud/RR.operation'
-import crudOperation from '@crud/CRUD.operation'
+import crudOperation from '@crud/CRUD.operation2'
 import udOperation from '@crud/UD.operation'
 import pagination from '@crud/Pagination'
 

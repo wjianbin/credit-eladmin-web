@@ -6,6 +6,8 @@
         <!-- 搜索 -->
         <label class="el-form-item-label">客户编号</label>
         <el-input v-model="query.customerid" clearable placeholder="客户编号" style="width: 185px;" class="filter-item" @keyup.enter.native="crud.toQuery" />
+        <label class="el-form-item-label">状态</label>
+        <el-input v-model="query.status" clearable placeholder="状态" style="width: 185px;" class="filter-item" @keyup.enter.native="crud.toQuery" />
         <rrOperation :crud="crud" />
       </div>
       <!--如果想在工具栏加入更多按钮，可以使用插槽方式， slot = 'left' or 'right'-->
@@ -16,16 +18,14 @@
           <el-form-item label="id" prop="id">
             <el-input v-model="form.id" style="width: 370px;" />
           </el-form-item>
-          <el-form-item label="客户编号">
-            <el-input v-model="form.customerid" style="width: 370px;" />
-          </el-form-item>
           <el-form-item label="信息记录类型">
             <el-select v-model="form.infrectype" filterable placeholder="请选择">
               <el-option
                 v-for="item in dict.InfRecType"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="姓名">
@@ -37,7 +37,8 @@
                 v-for="item in dict.IDType"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="证件号码">
@@ -46,11 +47,21 @@
           <el-form-item label="信息来源编码">
             <el-input v-model="form.infsurccode" style="width: 370px;" />
           </el-form-item>
-          <el-form-item label="上报日期">
+          <el-form-item label="客户编号">
+            <el-input v-model="form.customerid" style="width: 370px;" />
+          </el-form-item>
+          <el-form-item label="上传日期">
             <el-input v-model="form.uploaddate" style="width: 370px;" />
           </el-form-item>
-          <el-form-item label="上报状态">
-            <el-input v-model="form.status" style="width: 370px;" />
+          <el-form-item label="状态">
+            <el-select v-model="form.status" filterable placeholder="请选择">
+              <el-option
+                v-for="item in dict.uploadstatus"
+                :key="item.id"
+                :label="item.label"
+                :value="item.value"
+              />
+            </el-select>
           </el-form-item>
           <el-form-item label="create_time">
             <el-input v-model="form.createTime" style="width: 370px;" />
@@ -65,7 +76,6 @@
       <el-table ref="table" v-loading="crud.loading" :data="crud.data" size="small" style="width: 100%;" @selection-change="crud.selectionChangeHandler">
         <el-table-column type="selection" width="55" />
         <el-table-column prop="id" label="id" />
-        <el-table-column prop="customerid" label="客户编号" />
         <el-table-column prop="infrectype" label="信息记录类型">
           <template slot-scope="scope">
             {{ dict.label.InfRecType[scope.row.infrectype] }}
@@ -79,12 +89,17 @@
         </el-table-column>
         <el-table-column prop="idnum" label="证件号码" />
         <el-table-column prop="infsurccode" label="信息来源编码" />
-        <el-table-column prop="uploaddate" label="上报日期">
+        <el-table-column prop="customerid" label="客户编号" />
+        <el-table-column prop="uploaddate" label="上传日期">
           <template slot-scope="scope">
             <span>{{ parseTime(scope.row.uploaddate) }}</span>
           </template>
         </el-table-column>
-        <el-table-column prop="status" label="上报状态" />
+        <el-table-column prop="status" label="状态">
+          <template slot-scope="scope">
+            {{ dict.label.uploadstatus[scope.row.status] }}
+          </template>
+        </el-table-column>
         <el-table-column prop="createTime" label="create_time">
           <template slot-scope="scope">
             <span>{{ parseTime(scope.row.createTime) }}</span>
@@ -109,16 +124,16 @@
 import crudBusDelCustomerInfo from '@/api/busDelCustomerInfo'
 import CRUD, { presenter, header, form, crud } from '@crud/crud'
 import rrOperation from '@crud/RR.operation'
-import crudOperation from '@crud/CRUD.operation'
+import crudOperation from '@crud/CRUD.operation2'
 import udOperation from '@crud/UD.operation'
 import pagination from '@crud/Pagination'
 
-const defaultForm = { id: null, customerid: null, infrectype: null, name: null, idtype: null, idnum: null, infsurccode: null, uploaddate: null, status: null, createTime: null }
+const defaultForm = { id: null, infrectype: null, name: null, idtype: null, idnum: null, infsurccode: null, customerid: null, uploaddate: null, status: null, createTime: null }
 export default {
   name: 'BusDelCustomerInfo',
   components: { pagination, crudOperation, rrOperation, udOperation },
   mixins: [presenter(), header(), form(defaultForm), crud()],
-  dicts: ['InfRecType', 'IDType'],
+  dicts: ['InfRecType', 'IDType', 'uploadstatus'],
   cruds() {
     return CRUD({ title: '/api/delcustomerinfo', url: 'api/busDelCustomerInfo', sort: 'id,desc', crudMethod: { ...crudBusDelCustomerInfo }})
   },
@@ -135,7 +150,8 @@ export default {
         ]
       },
       queryTypeOptions: [
-        { key: 'customerid', display_name: '客户编号' }
+        { key: 'customerid', display_name: '客户编号' },
+        { key: 'status', display_name: '状态' }
       ]
     }
   },

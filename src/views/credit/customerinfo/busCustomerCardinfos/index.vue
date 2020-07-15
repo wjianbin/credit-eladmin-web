@@ -25,7 +25,8 @@
                 v-for="item in dict.InfRecType"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="姓名">
@@ -37,7 +38,8 @@
                 v-for="item in dict.IDType"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="证件号码">
@@ -52,7 +54,8 @@
                 v-for="item in dict.IDType"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="其他证件号码">
@@ -139,7 +142,7 @@
 import crudBusCustomerCardinfos from '@/api/busCustomerCardinfos'
 import CRUD, { presenter, header, form, crud } from '@crud/crud'
 import rrOperation from '@crud/RR.operation'
-import crudOperation from '@crud/CRUD.operation'
+import crudOperation from '@crud/CRUD.operation2'
 import udOperation from '@crud/UD.operation'
 import pagination from '@crud/Pagination'
 

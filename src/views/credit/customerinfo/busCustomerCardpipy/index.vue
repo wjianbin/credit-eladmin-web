@@ -13,8 +13,8 @@
       <!--表单组件-->
       <el-dialog :close-on-click-modal="false" :before-close="crud.cancelCU" :visible.sync="crud.status.cu > 0" :title="crud.status.title" width="500px">
         <el-form ref="form" :model="form" :rules="rules" size="small" label-width="80px">
-          <el-form-item label="id" prop="id1">
-            <el-input v-model="form.id1" style="width: 370px;" />
+          <el-form-item label="id" prop="id">
+            <el-input v-model="form.id" style="width: 370px;" />
           </el-form-item>
           <el-form-item label="客户编号">
             <el-input v-model="form.customerid" style="width: 370px;" />
@@ -25,7 +25,8 @@
                 v-for="item in dict.InfRecType"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="姓名">
@@ -37,7 +38,8 @@
                 v-for="item in dict.IDType"
                 :key="item.id"
                 :label="item.label"
-                :value="item.value" />
+                :value="item.value"
+              />
             </el-select>
           </el-form-item>
           <el-form-item label="证件号码">
@@ -82,7 +84,7 @@
       <!--表格渲染-->
       <el-table ref="table" v-loading="crud.loading" :data="crud.data" size="small" style="width: 100%;" @selection-change="crud.selectionChangeHandler">
         <el-table-column type="selection" width="55" />
-        <el-table-column prop="id1" label="id" />
+        <el-table-column prop="id" label="id" />
         <el-table-column prop="customerid" label="客户编号" />
         <el-table-column prop="infrectype" label="信息记录类型">
           <template slot-scope="scope">
@@ -141,18 +143,18 @@
 import crudBusCustomerCardpipy from '@/api/busCustomerCardpipy'
 import CRUD, { presenter, header, form, crud } from '@crud/crud'
 import rrOperation from '@crud/RR.operation'
-import crudOperation from '@crud/CRUD.operation'
+import crudOperation from '@crud/CRUD.operation2'
 import udOperation from '@crud/UD.operation'
 import pagination from '@crud/Pagination'
 
-const defaultForm = { id1: null, customerid: null, infrectype: null, name: null, idtype: null, idnum: null, infsurccode: null, idefctdate: null, idduedate: null, idorgname: null, iddist: null, cimoc: null, rptdate: null, uploaddate: null, uploadflag: null, createTime: null }
+const defaultForm = { id: null, customerid: null, infrectype: null, name: null, idtype: null, idnum: null, infsurccode: null, idefctdate: null, idduedate: null, idorgname: null, iddist: null, cimoc: null, rptdate: null, uploaddate: null, uploadflag: null, createTime: null }
 export default {
   name: 'BusCustomerCardpipy',
   components: { pagination, crudOperation, rrOperation, udOperation },
   mixins: [presenter(), header(), form(defaultForm), crud()],
   dicts: ['InfRecType', 'IDType'],
   cruds() {
-    return CRUD({ title: '/api/customercardpipy', url: 'api/busCustomerCardpipy', sort: 'id1,desc', crudMethod: { ...crudBusCustomerCardpipy }})
+    return CRUD({ title: '/api/customercardpipy', url: 'api/busCustomerCardpipy', sort: 'id,desc', crudMethod: { ...crudBusCustomerCardpipy }})
   },
   data() {
     return {
@@ -162,7 +164,7 @@ export default {
         del: ['admin', 'busCustomerCardpipy:del']
       },
       rules: {
-        id1: [
+        id: [
           { required: true, message: 'id不能为空', trigger: 'blur' }
         ]
       },

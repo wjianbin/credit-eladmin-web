@@ -331,6 +331,20 @@ function CRUD(options) {
       crud.downloadLoading = true
       download(crud.url + '/download', crud.getQueryParams()).then(result => {
         downloadFile(result, crud.title + '数据', 'xlsx')
+        // downloadFile(result, 'test', 'zip')
+        crud.downloadLoading = false
+      }).catch(() => {
+        crud.downloadLoading = false
+      })
+    },
+    /**
+     * 通用导出
+     */
+    doExport2() {
+      crud.downloadLoading = true
+      download(crud.url + '/download', crud.getQueryParams()).then(result => {
+        // downloadFile(result, crud.title + '数据', 'xlsx')
+        downloadFile(result, crud.title, 'zip')
         crud.downloadLoading = false
       }).catch(() => {
         crud.downloadLoading = false
